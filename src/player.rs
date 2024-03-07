@@ -20,7 +20,7 @@ impl Player {
         )
     }
 
-    pub fn update(&mut self, ctx: &mut BTerm, map: &Map, camera: &Camera) {
+    pub fn update(&mut self, ctx: &mut BTerm, map: &Map, camera: &mut Camera) {
         if let Some(key) = ctx.key {
             let delta = match key {
                 VirtualKeyCode::Left => Point::new(-1, 0),
