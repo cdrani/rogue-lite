@@ -8,3 +8,4 @@ authors = ["cdrani"]
 
 [dependencies]
 bracket-lib = "~0.8.7"
+legion = "=0.3.1"
