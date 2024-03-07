@@ -1,6 +1,8 @@
 mod camera;
+mod components;
 mod map;
 mod map_builder;
+mod spawner;
 
 mod prelude {
     pub use bracket_lib::prelude::*;
@@ -14,8 +16,10 @@ mod prelude {
     pub const DISPLAY_HEIGHT: i32 = SCREEN_HEIGHT / 2;
 
     pub use crate::camera::*;
+    pub use crate::components::*;
     pub use crate::map::*;
     pub use crate::map_builder::*;
+    pub use crate::spawner::*;
 }
 
 use prelude::*;
@@ -32,6 +36,8 @@ impl State {
         let mut resources = Resources::default();
         let mut rng = RandomNumberGenerator::new();
         let map_builder = MapBuilder::new(&mut rng);
+
+        spawn_player(&mut ecs, map_builder.player_start);
 
         resources.insert(map_builder.map);
         resources.insert(Camera::new(map_builder.player_start));
